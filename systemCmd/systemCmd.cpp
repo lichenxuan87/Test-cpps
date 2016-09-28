@@ -13,7 +13,7 @@
 #include <pthread.h>
 
 const int DURATION = 10; // lasting duration
-const int FREQUENCY = 50; // times per second
+const int FREQUENCY = 10; // times per second
 const int THREADS = 10;
 const int STRING_LEN = 255;
 
