@@ -9,7 +9,7 @@ SERVER_SRC = dbusServer.c
 
 PACKAGES += libsystemd
 
-ifndef $(TARGET_ARCH)
+ifndef TARGET_ARC
 	PKG_CONFIG = pkg-config
 endif
 
