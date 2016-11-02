@@ -1,5 +1,6 @@
 #!/bin/bash
 
+# This script is to caculate how long a script takes
 
 START=$(date +%s)
 
