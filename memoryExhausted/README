@@ -1,0 +1,10 @@
+Purpose:
+To test system behavior when memory exhausted
+
+
+Build method:
+
+1. Change env.sh to fit your own compile enviroment
+2. $ . env.sh 
+3. $ make
+

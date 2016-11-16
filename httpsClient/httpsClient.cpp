@@ -55,8 +55,8 @@ int main(int argc, char **argv)
                         Context::CLIENT_USE,
                         "",
                         "",
-                        "/etc/ssl/certs",
-                        Poco::Net::Context::VERIFY_RELAXED,
+                        "/etc/ssl/certs", // Change: set root CA path
+                        Poco::Net::Context::VERIFY_RELAXED, // Change: verify certificate
                         9,
                         true
                        );
@@ -75,7 +75,7 @@ int main(int argc, char **argv)
             else
             {
                 cout << "Use existing ssl session" << endl;
-                session = new HTTPSClientSession(g_context, g_sslsession);
+                session = new HTTPSClientSession(g_context, g_sslsession); // Change: Reuse existing SSL session
             }
 
             session->setHost(uri.getHost());
@@ -86,7 +86,7 @@ int main(int argc, char **argv)
 
             if (g_sslsession == (Session*)NULL)
             {
-                g_sslsession = session->sslSession();
+                g_sslsession = session->sslSession(); // Change: get SSL session and store for future use
                 cout << "Get ssl session from current HTTPS session" << endl;
             }
 
