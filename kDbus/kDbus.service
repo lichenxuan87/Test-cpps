@@ -1,5 +1,5 @@
 [D-BUS Service]
 Name=com.saic.ivi.testService
 #SystemdService=music_rec.service
-Exec=/home/root/aliDbus
+Exec=/home/root/kDbus
 
