@@ -23,7 +23,7 @@ LB_INC = -L$(SYSTEM_ROOT)/usr/lib
 
 CFLAGS +=  $(INC)
 CXXFLAGS += $(CFLAGS) 
-LDFLAGS += -lbase \
+LDFLAGS += -lbase -llog\
              $(LB_INC) \
             -Wl,-rpath-link,$(SYSTEM_ROOT)/usr/lib,-rpath-link,$(SYSTEM_ROOT)/lib
 

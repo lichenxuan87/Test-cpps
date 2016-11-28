@@ -3,7 +3,7 @@
 ######################
 #Specify tool chain path and other environment variables
 #####################
-export TOOL_CHAIN_PATH=~/gcc-linaro-arm-linux-gnueabihf-4.7-2013.03-20130313_linux
+export TOOL_CHAIN_PATH=/home/saic/gcc-linaro-arm-linux-gnueabihf-4.7-2013.03-20130313_linux
 export TOOL_PREFIX=arm-linux-gnueabihf-
 
 export CC=${TOOL_CHAIN_PATH}/bin/${TOOL_PREFIX}gcc
