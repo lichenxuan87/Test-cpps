@@ -36,7 +36,7 @@ while true ; do
     esac
 done
 
-if [ $DIRECTORY = "" ] || [ $STREAM = "" ]; then
+if [[ ${DIRECTORY} = "" ]] || [[ ${STREAM} = "" ]]; then
     echo "Usage: ./covAnalyze -d <build_directory> -s <commit stream>"
     exit 1
 else
