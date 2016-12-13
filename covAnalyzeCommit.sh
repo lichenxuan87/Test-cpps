@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 
 # "d" and "directory" have required arguments
@@ -36,10 +36,25 @@ while true ; do
     esac
 done
 
-if [[ ${DIRECTORY} = "" ]] || [[ ${STREAM} = "" ]]; then
+if [ "${YUNOS_VERSION}" = "" ]; then
+    echo "Yunos Version not defined"
+else
+    echo ${YUNOS_VERSION}
+fi
+
+
+
+if [ "${DIRECTORY}" = "" ] || [ "${STREAM}" = "" ]; then
     echo "Usage: ./covAnalyze -d <build_directory> -s <commit stream>"
     exit 1
 else
+    if [ -d ${DIRECTORY} ] && [ -d ${STREAM} ]; then
+        echo "${DIRECTORY} exists"
+    else
+        echo "${DIRECTORY} doesn't exists"
+        exit
+    fi
+    
     echo "Build target directory: $DIRECTORY"
     echo "Issue commit stream: $STREAM"
 fi
