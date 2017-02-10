@@ -10,11 +10,11 @@ int main(int argc, char *argv[]) {
     sd_bus_error error = SD_BUS_ERROR_NULL;
     sd_bus_message *m = NULL;
     sd_bus *bus = NULL;
-    const char *path;
+    int result;
     int r;
 
     /* Connect to the system bus */
-    r = sd_bus_open_system(&bus);
+    r = sd_bus_open_user(&bus);
     if (r < 0) {
             fprintf(stderr, "Failed to connect to system bus: %s\n", strerror(-r));
             goto finish;
@@ -22,28 +22,33 @@ int main(int argc, char *argv[]) {
 
     /* Issue the method call and store the respons message in m */
     r = sd_bus_call_method(bus,
-                           "com.saic.ivi.AudioManager",           /* service to contact */
-                           "/com/saic/ivi/AudioManager/Settings",          /* object path */
-                           "com.saic.ivi.AudioManager.Settings",   /* interface name */
-                           "VolumeDown",                          /* method name */
+                           "com.saic.ivi.test",           /* service to contact */
+                           "/com/saic/ivi/test",          /* object path */
+                           "com.saic.ivi.test",   /* interface name */
+                           "SetFrequency",                          /* method name */
                            &error,                               /* object to return error in */
                            &m,                                   /* return message on success */
-                           "s",                                 /* input signature */
-                           "Media"                       /* first argument */
-                           );                           /* second argument */
+                           ""//,                                 /* input signature */
+                           //3,									/* first argument */
+						   //4									/* second argument */
+                           );
     if (r < 0) {
             fprintf(stderr, "Failed to issue method call: %s\n", error.message);
             goto finish;
     }
+    else
+    {
+    	printf("Call method success!\n");
+    }
 
     /* Parse the response message */
-    r = sd_bus_message_read(m, "s", &path);
+    r = sd_bus_message_read(m, "x", &result);
     if (r < 0) {
             fprintf(stderr, "Failed to parse response message: %s\n", strerror(-r));
             goto finish;
     }
 
-    printf("Return result is %s.\n", path);
+    printf("Return result is %d.\n", result);
 
 finish:
     sd_bus_error_free(&error);

@@ -1,0 +1,20 @@
+<node>
+  <interface name="com.saic.ivi.test">
+
+    <!--
+        setFrequency:
+        @freq: set frequency
+
+        Method used to changing the frequency of the tuner. 
+      -->
+    <method name="SetFrequency">
+    </method>
+
+ 
+    <signal name="SigFMAMList">
+      <arg type="s" name="fmamlist"/>
+    </signal>
+
+  </interface>
+
+</node>

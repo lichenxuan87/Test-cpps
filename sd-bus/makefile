@@ -4,6 +4,9 @@
 CLIENT = basicSdbus
 SERVER = dbusServer
 
+
+all :$(CLIENT) $(SERVER)
+
 CLIENT_SRC = basicSdbus.cpp
 SERVER_SRC = dbusServer.c
 
@@ -28,11 +31,12 @@ LDFLAGS += `$(PKG_CONFIG) --libs $(PACKAGES)` \
 #OBJS = $(patsubst %.cpp,%.o,$(SRC))
 #COBJS = $(patsubst %.c,%.o,$(CSRC))
 
-all :$(CLIENT) $(SERVER)
 	
 $(CLIENT) : $(CLIENT_SRC)
-$(SERVER) : $(SERVER_SRC)
+	$(CXX) $(CXXFLAGS) $^ $(LDFLAGS) -o $@
 
+$(SERVER) : $(SERVER_SRC)
+	$(CC) $(CXXFLAGS) $^ $(LDFLAGS) -o $@
 
 
 #.PHONY: clean

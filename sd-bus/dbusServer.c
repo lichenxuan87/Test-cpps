@@ -1,19 +1,26 @@
-/*
- * dbusServier.cpp
- *
- *  Created on: Sep 9, 2016
- *      Author: saic
- */
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <errno.h>
 #include <systemd/sd-bus.h>
 
 
-const char* const BUS_NAME = "com.saic.ivi.AudioManager";
-const char* const OBJECT_NAME = "/com/saic/ivi/AudioManager/Settings";
-const char* const INTERFACE_NAME = "com.saic.ivi.AudioManager.Settings";
+const char* const busName = "com.saic.ivi.test";
+const char* const objectName = "/com/saic/ivi/test";
+
+static int method_fire(sd_bus_message *m, void *userdata, sd_bus_error *ret_error) {
+        int32_t x;
+        int r;
+
+        /* Read the parameters */
+        r = sd_bus_message_read(m, "i", &x);
+        if (r < 0) {
+                fprintf(stderr, "Failed to parse parameters: %s\n", strerror(-r));
+                return r;
+        }
+
+        /* Reply with the response */
+        return sd_bus_reply_method_return(m, "i", x+1);
+}
 
 static int method_multiply(sd_bus_message *m, void *userdata, sd_bus_error *ret_error) {
         int64_t x, y;
@@ -52,10 +59,11 @@ static int method_divide(sd_bus_message *m, void *userdata, sd_bus_error *ret_er
 
 /* The vtable of our little object, implements the net.poettering.Calculator interface */
 static const sd_bus_vtable calculator_vtable[] = {
-        SD_BUS_VTABLE_START(0),
-        SD_BUS_METHOD("VolumeDown", "xx", "x", method_multiply, SD_BUS_VTABLE_UNPRIVILEGED),
-//        SD_BUS_METHOD("Divide",   "xx", "x", method_divide,   SD_BUS_VTABLE_UNPRIVILEGED),
-        SD_BUS_VTABLE_END
+		SD_BUS_VTABLE_START(0),
+		SD_BUS_METHOD("Multiply", "i", "i", method_fire, SD_BUS_VTABLE_UNPRIVILEGED),
+		SD_BUS_METHOD("Multiply", "xx", "x", method_multiply, SD_BUS_VTABLE_UNPRIVILEGED),
+		SD_BUS_METHOD("Divide",   "xx", "x", method_divide,   SD_BUS_VTABLE_UNPRIVILEGED),
+		SD_BUS_VTABLE_END
 };
 
 int main(int argc, char *argv[]) {
@@ -73,8 +81,8 @@ int main(int argc, char *argv[]) {
         /* Install the object */
         r = sd_bus_add_object_vtable(bus,
                                      &slot,
-                                     OBJECT_NAME,  /* object path */
-                                     INTERFACE_NAME,   /* interface name */
+                                     objectName,  /* object path */
+									 busName,   /* interface name */
                                      calculator_vtable,
                                      NULL);
         if (r < 0) {
@@ -83,7 +91,7 @@ int main(int argc, char *argv[]) {
         }
 
         /* Take a well-known service name so that clients can find us */
-        r = sd_bus_request_name(bus, BUS_NAME, 0);
+        r = sd_bus_request_name(bus, busName, 0);
         if (r < 0) {
                 fprintf(stderr, "Failed to acquire service name: %s\n", strerror(-r));
                 goto finish;
@@ -113,7 +121,3 @@ finish:
 
         return r < 0 ? EXIT_FAILURE : EXIT_SUCCESS;
 }
-
-
-
-
