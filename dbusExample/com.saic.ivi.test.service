@@ -1,0 +1,5 @@
+[D-BUS Service]
+Name=com.saic.ivi.test
+#SystemdService=music_rec.service
+Exec=/home/root/test
+
