@@ -7,7 +7,9 @@
 
         Method used to changing the frequency of the tuner. 
       -->
-    <method name="SetFrequency">
+    <method name="FireInTheHole">
+    	<arg direction="in" name="number" type="i"/>
+        <arg direction="out" name="numberPlus" type="i"/>
     </method>
 
  

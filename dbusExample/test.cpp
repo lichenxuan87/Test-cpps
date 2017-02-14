@@ -22,12 +22,13 @@
 ComSaicIviTest * gSkeleton = NULL;
 
 
-gboolean handleSetFrequency (
+gboolean handleFireInTheHole (
 		ComSaicIviTest *object,
-		GDBusMethodInvocation *invocation)
+		GDBusMethodInvocation *invocation,
+		gint arg_number)
 {
 	printf("Recieved method call handleSetFrequency\n");
-	com_saic_ivi_test_complete_set_frequency(gSkeleton, invocation);
+	com_saic_ivi_test_complete_fire_in_the_hole(gSkeleton, invocation, arg_number+1);
 
 	return TRUE;
 }
@@ -59,7 +60,7 @@ void onBusAcquired(GDBusConnection *conn, const char *name, void *ud)
 		printf("Export interface error\n");
 	}
 
-	g_signal_connect (gSkeleton, "handle-set-frequency", G_CALLBACK (handleSetFrequency), NULL); /* user_data */
+	g_signal_connect (gSkeleton, "handle-fire-in-the-hole", G_CALLBACK (handleFireInTheHole), NULL); /* user_data */
 }
 
 void onNameLost(GDBusConnection *conn, const char *name, void *ud)
@@ -73,7 +74,7 @@ int main()
     printf("Entering CDbusProcessor::%s\n", __FUNCTION__);
 
     GMainLoop* mpMainLoop = g_main_loop_new(nullptr, false);
-    int mBusId = g_bus_own_name(G_BUS_TYPE_SESSION, "com.saic.ivi.test",
+    int mBusId = g_bus_own_name(G_BUS_TYPE_SYSTEM, "com.saic.ivi.test",
                             G_BUS_NAME_OWNER_FLAGS_REPLACE,
                             onBusAcquired, onNameAcquired,
                             onNameLost, nullptr, nullptr);

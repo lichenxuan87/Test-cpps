@@ -24,6 +24,8 @@ void onbusNameAppear(GDBusConnection *conn, const gchar *name, const gchar *name
 void* run(void*)
 {
 	g_main_loop_run(gMainLoop);
+
+	return (void*)0;
 }
 
 GAsyncResult *gRes = NULL;
@@ -35,14 +37,16 @@ AsyncReadyCallback (GObject *source_object,
 {
 	GError *error = NULL;
 
-	com_saic_ivi_test_call_set_frequency_finish (
+	int output = 0;
+	com_saic_ivi_test_call_fire_in_the_hole_finish (
 			(ComSaicIviTest*)source_object,
+			&output,
 			res,
 			&error);
 
 	if (error == NULL)
 	{
-		printf(" Call method: Success\n");
+		printf(" Call method: Success, return result:%d\n", output);
 	}
 	else
 	{
@@ -85,7 +89,7 @@ int main()
 
 
 	ComSaicIviTest * testProxy = com_saic_ivi_test_proxy_new_for_bus_sync(
-			G_BUS_TYPE_SESSION,
+			G_BUS_TYPE_SYSTEM,
 			G_DBUS_PROXY_FLAGS_DO_NOT_AUTO_START_AT_CONSTRUCTION,
 			"com.saic.ivi.test",
 			"/com/saic/ivi/test",
@@ -103,7 +107,8 @@ int main()
 	clock_gettime(CLOCK_MONOTONIC_RAW, &kernelTp); // Kernel time
 	printf("Kernel time: %ld.%.6ld, synchronized call\n", kernelTp.tv_sec, kernelTp.tv_nsec/1000);
 
-	com_saic_ivi_test_call_set_frequency_sync(testProxy, NULL, &error);
+	int output = 0;
+	com_saic_ivi_test_call_fire_in_the_hole_sync(testProxy, 33, &output, NULL, &error);
 
 	// Get current kernel time
 	clock_gettime(CLOCK_MONOTONIC_RAW, &kernelTp); // Kernel time
@@ -113,7 +118,7 @@ int main()
 
 	if (error == NULL)
 	{
-		printf(" Call method: Success\n");
+		printf(" Call method: Success, return result %d\n", output);
 	}
 	else
 	{
