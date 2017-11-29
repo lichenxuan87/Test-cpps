@@ -1,0 +1,15 @@
+Reference:
+
+1. http://www.zimuel.it/blog/sign-and-verify-a-file-using-openssl
+2. http://www.cnblogs.com/tchz/p/3855379.html
+
+Command line:
+Sign:
+openssl dgst -sha256 -sign ../myOwnCA/private/server.key -out sign.sha256 README
+openssl base64 -in sign.sha256 -out signbase64.sha256
+
+
+Verify:
+openssl base64 -d -in signbase64.sha256 -out sign.sha256
+openssl x509 -inform pem -in ../myOwnCA/certs/server.crt -pubkey -noout > publickey.pem
+openssl dgst -sha256 -verify publickey.pem -signature sign.sha256 README

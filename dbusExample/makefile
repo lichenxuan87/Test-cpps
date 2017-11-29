@@ -13,6 +13,10 @@ DBUS_GEN_HEADER = com.saic.ivi.test.xml.h
 
 XML = com.saic.ivi.test.xml
 
+ifeq ($(TARGET_ARC), arm)
+	CFLAGS += -DARM
+endif
+
 INC = -I$(SYSTEM_ROOT)/usr/include \
 	-I$(SYSTEM_ROOT)/usr/include/glib-2.0 \
 	-I$(SYSTEM_ROOT)/usr/lib/glib-2.0/include \
@@ -20,7 +24,7 @@ INC = -I$(SYSTEM_ROOT)/usr/include \
 	-I$(SYSTEM_ROOT)/usr/include/gio-unix-2.0 
 
 
-CFLAGS +=  $(INC) -Wall
+CFLAGS +=  $(INC) -Wall -g
 CXXFLAGS += $(CFLAGS) -std=c++11
 LDFLAGS = -L$(SYSTEM_ROOT)/usr/lib/x86_64-linux-gnu -L$(SYSTEM_ROOT)/usr/lib \
 			-lglib-2.0 -lgio-2.0 -lgobject-2.0 -lrt -pthread \

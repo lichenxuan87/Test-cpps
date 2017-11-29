@@ -25,12 +25,11 @@ int main(int argc, char *argv[]) {
                            "com.saic.ivi.test",           /* service to contact */
                            "/com/saic/ivi/test",          /* object path */
                            "com.saic.ivi.test",   /* interface name */
-                           "SetFrequency",                          /* method name */
+                           "Fire",                          /* method name */
                            &error,                               /* object to return error in */
                            &m,                                   /* return message on success */
-                           ""//,                                 /* input signature */
-                           //3,									/* first argument */
-						   //4									/* second argument */
+                           "i",                                 /* input signature */
+                           3									/* first argument */
                            );
     if (r < 0) {
             fprintf(stderr, "Failed to issue method call: %s\n", error.message);
@@ -42,7 +41,7 @@ int main(int argc, char *argv[]) {
     }
 
     /* Parse the response message */
-    r = sd_bus_message_read(m, "x", &result);
+    r = sd_bus_message_read(m, "i", &result);
     if (r < 0) {
             fprintf(stderr, "Failed to parse response message: %s\n", strerror(-r));
             goto finish;

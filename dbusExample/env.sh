@@ -10,6 +10,6 @@ export CC=${TOOL_CHAIN_PATH}/bin/${TOOL_PREFIX}gcc
 export CXX=${TOOL_CHAIN_PATH}/bin/${TOOL_PREFIX}g++
 export PKG_CONFIG=${TOOL_CHAIN_PATH}/bin/${TOOL_PREFIX}pkg-config
 
-export SYSTEM_ROOT=/home/saic/IP31_4.0.0-R-1610311534
+export SYSTEM_ROOT=/home/saic/dra7xx-evm
 export PKG_CONFIG_PATH=${SYSTEM_ROOT}/usr/lib/pkgconfig
 export TARGET_ARC=arm

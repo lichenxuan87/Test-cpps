@@ -82,6 +82,12 @@ int main(int argc, char **argv)
             session->setPort(uri.getPort());
 
             HTTPRequest req(HTTPRequest::HTTP_POST, uri.toString(), HTTPMessage::HTTP_1_1);
+
+            Poco::Net::HTMLForm form;
+			form.add("Accept-Encoding", "gzip,deflate");
+			form.prepareSubmit(req);
+
+
             session->sendRequest(req);
 
             if (g_sslsession == (Session*)NULL)

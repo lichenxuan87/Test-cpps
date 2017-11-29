@@ -1,0 +1,61 @@
+#include <stdio.h>
+#include <openssl/sha.h>
+#include <openssl/rsa.h>
+#include <openssl/rand.h>
+#include <openssl/objects.h>
+#include <assert.h>
+
+int main()
+{
+    unsigned char hash[ SHA_DIGEST_LENGTH ];
+
+#ifndef XINPUT_LEN    
+#define XINPUT_LEN    (2*1024)
+#endif
+
+#ifndef XRSA_KEY_BITS
+#define XRSA_KEY_BITS (1024)
+#endif
+
+#define  XRSA_KEY_BITS 2048 
+
+
+    unsigned char *input = "ccccccccc  " ; //[ XINPUT_LEN ];
+    unsigned char sign [ XRSA_KEY_BITS/8];
+
+    unsigned sign_len = sizeof( sign );
+
+
+
+    FILE *fp = fopen("server.key", "r");
+    RSA*  rsa_pri_key = PEM_read_RSAPrivateKey(fp, NULL, NULL, NULL);
+    if (!rsa_pri_key)
+        printf("Server.key has a wrong format!\n");
+
+    fclose(fp);
+
+    fp = fopen("server.crt", "r");
+    RSA*  rsa_pub_key = PEM_read_RSA_PUBKEY(fp, NULL, NULL, NULL);
+    if (!rsa_pub_key)
+    {
+        printf("Server.crt has a wrong format!\n");
+        return 1;
+    }
+    fclose(fp);
+
+    int r = RSA_sign( NID_sha256WithRSAEncryption, input , SHA_DIGEST_LENGTH , sign , &sign_len , rsa_pri_key );
+    assert( 0 != r && sizeof( sign ) == sign_len );
+
+    printf("%d \n", __LINE__);
+
+    if (RSA_verify( NID_sha256WithRSAEncryption , input, SHA_DIGEST_LENGTH , sign , sign_len , rsa_pub_key ) == 1 ) {
+        printf(" rsa verify ok \n");
+    }else{
+        printf(" rsa verify faile \n");
+    }
+
+    RSA_free( rsa_pub_key );
+    RSA_free( rsa_pri_key );
+
+    return 0;
+}

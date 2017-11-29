@@ -1,0 +1,77 @@
+Certificate:
+    Data:
+        Version: 3 (0x2)
+        Serial Number: 177 (0xb1)
+        Signature Algorithm: sha256WithRSAEncryption
+        Issuer: C=CN, ST=Shanghai, L=Shanghai, O=Banma Network Technology Co., Ltd, OU=Security Service, CN=YunOS Auto Root CA
+        Validity
+            Not Before: Jun  2 11:32:48 2017 GMT
+            Not After : May 26 11:32:48 2047 GMT
+        Subject: C=CN, ST=Shanghai, L=Shanghai, O=Banma Network Technology Co., Ltd, OU=Security Service, CN=YunOS Auto FOTA CA
+        Subject Public Key Info:
+            Public Key Algorithm: rsaEncryption
+                Public-Key: (2048 bit)
+                Modulus:
+                    00:e6:13:70:ed:1e:71:62:58:48:e2:da:92:1e:c8:
+                    1a:f4:fb:b6:27:cd:78:e0:a2:09:8b:5f:0f:7d:b7:
+                    94:6c:31:ce:c9:5c:c8:58:c4:ab:78:fb:d6:67:21:
+                    a4:29:a3:0a:58:6a:4d:1b:78:d1:2c:eb:4b:c2:d7:
+                    53:18:31:8a:bf:c8:f8:bc:64:b1:f5:7d:81:b7:75:
+                    53:09:8b:b4:69:76:3b:79:8e:c9:21:b4:49:ab:67:
+                    a6:65:53:6e:34:40:8c:4f:33:cd:c1:49:27:a8:c8:
+                    81:ca:24:21:2f:ff:99:f4:c9:f8:c6:61:38:cc:e6:
+                    4c:ba:5b:d5:ec:1f:5b:fd:bc:74:53:96:47:27:3a:
+                    83:20:13:44:76:c5:1b:04:97:22:cf:1b:8d:6e:23:
+                    91:dd:11:c9:3c:f8:41:d1:9e:c3:b4:eb:72:06:28:
+                    f3:7f:a3:55:4e:12:f6:29:d1:bb:b3:b8:23:30:5d:
+                    08:06:b7:ec:3b:b8:a8:1d:c3:f0:79:36:c2:a5:be:
+                    30:fd:10:fd:9a:e6:78:2a:40:a3:f5:13:0f:81:b2:
+                    08:50:2c:e7:62:80:71:aa:2b:63:af:02:b2:df:79:
+                    6c:e4:d8:ec:46:e8:1d:8c:35:de:13:8f:ef:a0:9d:
+                    63:d7:c1:16:08:08:4d:65:f8:ba:7a:5f:c9:a1:9d:
+                    73:d9
+                Exponent: 65537 (0x10001)
+        X509v3 extensions:
+            X509v3 Basic Constraints: 
+                CA:TRUE, pathlen:3
+            X509v3 Key Usage: 
+                Certificate Sign, CRL Sign
+    Signature Algorithm: sha256WithRSAEncryption
+        a2:13:29:b5:9a:fe:22:76:95:16:de:40:b2:2a:87:b9:29:7b:
+        c1:53:a0:00:b3:4d:f5:67:de:29:be:9b:30:c3:21:41:d5:c9:
+        13:2a:65:4d:3f:dd:67:7b:13:6b:8c:fe:d5:07:d8:4c:18:86:
+        31:d2:50:40:a6:23:c4:24:6e:84:6c:c9:46:8d:25:d6:43:88:
+        0c:df:08:df:b4:b7:d0:92:d5:80:99:13:d0:81:cd:aa:05:58:
+        cb:85:95:fb:ed:f0:66:d1:63:74:a8:7e:1e:bc:30:3f:ad:56:
+        0d:c8:e6:dc:b5:45:ff:1c:b3:07:87:21:e2:4d:93:10:1d:03:
+        be:a6:90:60:ad:ce:c7:04:fe:b0:1f:ac:40:6e:38:7a:3f:23:
+        5a:a9:f6:c2:ef:fa:21:60:67:a5:b5:59:36:e7:e7:6a:37:07:
+        4d:7a:4d:f2:12:5e:77:ab:2e:ac:d0:73:5e:c2:17:b7:d3:53:
+        36:ef:cd:89:e1:d7:22:22:40:e9:7d:4e:9b:5f:48:88:e8:08:
+        bd:a6:0d:7e:c3:e1:b2:5f:72:4e:6f:3b:55:bb:90:17:bd:6a:
+        88:5c:c4:5a:8d:31:ba:45:b0:30:3f:75:91:47:31:c6:37:95:
+        fb:bb:9f:6e:81:77:d8:44:b9:a1:49:ea:1f:6a:98:41:75:9b:
+        ec:be:d8:97
+-----BEGIN CERTIFICATE-----
+MIIDzDCCArSgAwIBAgICALEwDQYJKoZIhvcNAQELBQAwgZcxCzAJBgNVBAYTAkNO
+MREwDwYDVQQIDAhTaGFuZ2hhaTERMA8GA1UEBwwIU2hhbmdoYWkxKjAoBgNVBAoM
+IUJhbm1hIE5ldHdvcmsgVGVjaG5vbG9neSBDby4sIEx0ZDEZMBcGA1UECwwQU2Vj
+dXJpdHkgU2VydmljZTEbMBkGA1UEAwwSWXVuT1MgQXV0byBSb290IENBMB4XDTE3
+MDYwMjExMzI0OFoXDTQ3MDUyNjExMzI0OFowgZcxCzAJBgNVBAYTAkNOMREwDwYD
+VQQIDAhTaGFuZ2hhaTERMA8GA1UEBwwIU2hhbmdoYWkxKjAoBgNVBAoMIUJhbm1h
+IE5ldHdvcmsgVGVjaG5vbG9neSBDby4sIEx0ZDEZMBcGA1UECwwQU2VjdXJpdHkg
+U2VydmljZTEbMBkGA1UEAwwSWXVuT1MgQXV0byBGT1RBIENBMIIBIjANBgkqhkiG
+9w0BAQEFAAOCAQ8AMIIBCgKCAQEA5hNw7R5xYlhI4tqSHsga9Pu2J8144KIJi18P
+fbeUbDHOyVzIWMSrePvWZyGkKaMKWGpNG3jRLOtLwtdTGDGKv8j4vGSx9X2Bt3VT
+CYu0aXY7eY7JIbRJq2emZVNuNECMTzPNwUknqMiByiQhL/+Z9Mn4xmE4zOZMulvV
+7B9b/bx0U5ZHJzqDIBNEdsUbBJcizxuNbiOR3RHJPPhB0Z7DtOtyBijzf6NVThL2
+KdG7s7gjMF0IBrfsO7ioHcPweTbCpb4w/RD9muZ4KkCj9RMPgbIIUCznYoBxqitj
+rwKy33ls5NjsRugdjDXeE4/voJ1j18EWCAhNZfi6el/JoZ1z2QIDAQABoyAwHjAP
+BgNVHRMECDAGAQH/AgEDMAsGA1UdDwQEAwIBBjANBgkqhkiG9w0BAQsFAAOCAQEA
+ohMptZr+InaVFt5AsiqHuSl7wVOgALNN9WfeKb6bMMMhQdXJEyplTT/dZ3sTa4z+
+1QfYTBiGMdJQQKYjxCRuhGzJRo0l1kOIDN8I37S30JLVgJkT0IHNqgVYy4WV++3w
+ZtFjdKh+HrwwP61WDcjm3LVF/xyzB4ch4k2TEB0DvqaQYK3OxwT+sB+sQG44ej8j
+Wqn2wu/6IWBnpbVZNufnajcHTXpN8hJed6surNBzXsIXt9NTNu/NieHXIiJA6X1O
+m19IiOgIvaYNfsPhsl9yTm87VbuQF71qiFzEWo0xukWwMD91kUcxxjeV+7ufboF3
+2ES5oUnqH2qYQXWb7L7Ylw==
+-----END CERTIFICATE-----

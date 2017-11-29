@@ -1,0 +1,11 @@
+This is a test program to:
+
+1. Test gdbus activation method through EXEC
+2. Test gdbus activation method through systemd
+
+Test step:
+1. Put com.saic.ivi.test.service to /usr/share/dbus-1/system-services
+2. Put systemd-test.service to /lib/systemd/system/
+3. test, testClient to /home/root
+4. restart
+5. $ /home/root/testClient

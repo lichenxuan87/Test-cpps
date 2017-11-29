@@ -24,7 +24,7 @@ LB_INC = -L$(SYSTEM_ROOT)/usr/lib
 
 CFLAGS += `$(PKG_CONFIG) --cflags $(PACKAGES)` $(INC)
 CXXFLAGS += $(CFLAGS) 
-LDFLAGS += `$(PKG_CONFIG) --libs $(PACKAGES)` \
+LDFLAGS +=  `$(PKG_CONFIG) --libs $(PACKAGES)` \
              $(LB_INC) \
             -Wl,-rpath-link,$(SYSTEM_ROOT)/usr/lib,-rpath-link,$(SYSTEM_ROOT)/lib
 

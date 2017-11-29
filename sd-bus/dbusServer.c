@@ -60,8 +60,7 @@ static int method_divide(sd_bus_message *m, void *userdata, sd_bus_error *ret_er
 /* The vtable of our little object, implements the net.poettering.Calculator interface */
 static const sd_bus_vtable calculator_vtable[] = {
 		SD_BUS_VTABLE_START(0),
-		SD_BUS_METHOD("Multiply", "i", "i", method_fire, SD_BUS_VTABLE_UNPRIVILEGED),
-		SD_BUS_METHOD("Multiply", "xx", "x", method_multiply, SD_BUS_VTABLE_UNPRIVILEGED),
+		SD_BUS_METHOD("Fire", "i", "i", method_fire, SD_BUS_VTABLE_UNPRIVILEGED),
 		SD_BUS_METHOD("Divide",   "xx", "x", method_divide,   SD_BUS_VTABLE_UNPRIVILEGED),
 		SD_BUS_VTABLE_END
 };
@@ -72,7 +71,7 @@ int main(int argc, char *argv[]) {
         int r;
 
         /* Connect to the user bus this time */
-        r = sd_bus_open_system(&bus);
+        r = sd_bus_open_user(&bus);
         if (r < 0) {
                 fprintf(stderr, "Failed to connect to system bus: %s\n", strerror(-r));
                 goto finish;

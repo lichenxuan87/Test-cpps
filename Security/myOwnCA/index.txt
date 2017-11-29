@@ -1,0 +1,2 @@
+V	180527020852Z		01	unknown	/C=CN/ST=Shanghai/L=Shanghai/O=Banma/OU=Banma/CN=FOTA CA/emailAddress=fota_ca@alibaba-inc.com
+V	180527050706Z		122123104121	unknown	/C=CN/ST=Shanghai/L=Shanghai/O=Banma/OU=Banma/CN=FOTA/emailAddress=fota@alibaba-inc.com

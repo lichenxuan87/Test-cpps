@@ -4,6 +4,7 @@
 #include <wayland-client.h>
 //#include <wayland-server.h>
 #include <wayland-client-protocol.h>
+#include <WindowManager-server-protocol.h>
 #include <wayland-egl.h>
 #include <fcntl.h>
 #include <sys/mman.h>

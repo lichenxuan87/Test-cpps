@@ -1,0 +1,13 @@
+This is an example to use private key to encrypt and public key to decrypt.
+
+Steps:
+1. Get RSA key from private key file
+2. Encrypt aes_key file
+3. Get RSA key from public cert 
+4. Decrypt previous file.
+
+Reference: 
+http://stackoverflow.com/questions/10782826/digital-signature-for-a-file-using-openssl
+
+Example command:
+./rsaEnDe

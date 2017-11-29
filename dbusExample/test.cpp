@@ -74,7 +74,12 @@ int main()
     printf("Entering CDbusProcessor::%s\n", __FUNCTION__);
 
     GMainLoop* mpMainLoop = g_main_loop_new(nullptr, false);
+
+#ifdef ARM
     int mBusId = g_bus_own_name(G_BUS_TYPE_SYSTEM, "com.saic.ivi.test",
+#else
+    int mBusId = g_bus_own_name(G_BUS_TYPE_SESSION, "com.saic.ivi.test",
+#endif
                             G_BUS_NAME_OWNER_FLAGS_REPLACE,
                             onBusAcquired, onNameAcquired,
                             onNameLost, nullptr, nullptr);

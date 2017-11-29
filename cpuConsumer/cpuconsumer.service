@@ -1,0 +1,15 @@
+[Unit]
+Description=Media Service
+DefaultDependencies=no
+After=audio_manager.service
+After=basic.target
+
+[Service]
+ExecStart=/cpuConsumer
+Restart=always
+OOMScoreAdjust=-941
+CPUSchedulingPolicy=rr
+CPUSchedulingPriority=1
+
+[Install]
+WantedBy=sysinit.target

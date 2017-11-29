@@ -1,0 +1,3 @@
+[D-BUS Service]
+Name=com.saic.ivi.test
+Exec=/home/saic/codeRepos/Test-cpps/dbusExample/test

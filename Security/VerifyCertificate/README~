@@ -1,0 +1,15 @@
+Usage:
+./verifyCert <pathToYourCert>
+
+e.g. ./verifyCert ../myOwnCA/certs/server.crt
+
+By default, all trusted CA certs are already installed under /etc/ssl/certs.
+
+
+
+
+Reference: 
+
+1.http://fm4dd.com/openssl/certverify.htm
+
+2. https://zakird.com/2013/10/13/certificate-parsing-with-openssl

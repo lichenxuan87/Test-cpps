@@ -1,0 +1,10 @@
+Usage:
+./verifyCTL
+
+1. Verify ctl.
+2. Save ctl to /etc/ssl/ctl
+
+
+Reference: 
+
+1. http://openssl.6102.n7.nabble.com/base64-encode-decode-td2243.html

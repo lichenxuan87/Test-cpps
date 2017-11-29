@@ -1,0 +1,13 @@
+This is sample code for using AES-CBC-256 as encrytion / decryption method.
+
+What it does:
+2. Context initialization
+3. Encrypt file
+4. Decrypt previous file
+
+Reference: 
+https://github.com/saju/misc/blob/master/misc/openssl_aes.c
+https://github.com/llubu/mpro/tree/master/EFF
+
+Example command:
+./openssl_aes

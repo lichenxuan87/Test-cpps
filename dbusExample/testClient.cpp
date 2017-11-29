@@ -89,7 +89,11 @@ int main()
 
 
 	ComSaicIviTest * testProxy = com_saic_ivi_test_proxy_new_for_bus_sync(
+#ifdef ARM
 			G_BUS_TYPE_SYSTEM,
+#else
+			G_BUS_TYPE_SESSION,
+#endif
 			G_DBUS_PROXY_FLAGS_DO_NOT_AUTO_START_AT_CONSTRUCTION,
 			"com.saic.ivi.test",
 			"/com/saic/ivi/test",
