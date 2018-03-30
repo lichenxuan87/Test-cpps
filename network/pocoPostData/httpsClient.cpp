@@ -76,6 +76,8 @@ void postAndReceiveData()
     form.setEncoding("application/x-www-form-urlencoded");
     form.add("data", sendata);
     form.prepareSubmit(request);
+
+    printf("Session time out: %d\n", session->getTimeout().totalSeconds());
     try
     {
         ostream &os = session->sendRequest(request);
@@ -83,7 +85,9 @@ void postAndReceiveData()
     }
     catch (exception e)
     {
-        printf("Net work receive exception! code stringty:%s\n",e.what());
+
+        printf("Net work receive exception! code stringty:%s\n", e.what());
+
         delete session;
         return;
     }

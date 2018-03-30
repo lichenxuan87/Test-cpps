@@ -1,0 +1,149 @@
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/!svn/ver/3/trunk/easySQLite/easySQLite/easySQLite
+END
+_AUTHOR.TXT
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/!svn/ver/2/trunk/easySQLite/easySQLite/easySQLite/_AUTHOR.TXT
+END
+SqlRecord.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/!svn/ver/2/trunk/easySQLite/easySQLite/easySQLite/SqlRecord.cpp
+END
+SHA1.h
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/!svn/ver/2/trunk/easySQLite/easySQLite/easySQLite/SHA1.h
+END
+SqlValue.h
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/!svn/ver/2/trunk/easySQLite/easySQLite/easySQLite/SqlValue.h
+END
+SqlRecord.h
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/!svn/ver/2/trunk/easySQLite/easySQLite/easySQLite/SqlRecord.h
+END
+SqlField.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/!svn/ver/2/trunk/easySQLite/easySQLite/easySQLite/SqlField.cpp
+END
+SqlTable.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/!svn/ver/2/trunk/easySQLite/easySQLite/easySQLite/SqlTable.cpp
+END
+SqlField.h
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/!svn/ver/2/trunk/easySQLite/easySQLite/easySQLite/SqlField.h
+END
+SqlCommon.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/!svn/ver/2/trunk/easySQLite/easySQLite/easySQLite/SqlCommon.cpp
+END
+SqlRecordSet.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/!svn/ver/3/trunk/easySQLite/easySQLite/easySQLite/SqlRecordSet.cpp
+END
+SqlTable.h
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/!svn/ver/2/trunk/easySQLite/easySQLite/easySQLite/SqlTable.h
+END
+SqlCommon.h
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/!svn/ver/2/trunk/easySQLite/easySQLite/easySQLite/SqlCommon.h
+END
+_LICENSE.TXT
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/!svn/ver/2/trunk/easySQLite/easySQLite/easySQLite/_LICENSE.TXT
+END
+_ReadMe.html
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/!svn/ver/2/trunk/easySQLite/easySQLite/easySQLite/_ReadMe.html
+END
+SqlFieldSet.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/!svn/ver/2/trunk/easySQLite/easySQLite/easySQLite/SqlFieldSet.cpp
+END
+SqlRecordSet.h
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/!svn/ver/2/trunk/easySQLite/easySQLite/easySQLite/SqlRecordSet.h
+END
+_VERSION.TXT
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/!svn/ver/2/trunk/easySQLite/easySQLite/easySQLite/_VERSION.TXT
+END
+sqlite3.c
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/!svn/ver/2/trunk/easySQLite/easySQLite/easySQLite/sqlite3.c
+END
+SqlDatabase.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/!svn/ver/2/trunk/easySQLite/easySQLite/easySQLite/SqlDatabase.cpp
+END
+SqlFieldSet.h
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/!svn/ver/2/trunk/easySQLite/easySQLite/easySQLite/SqlFieldSet.h
+END
+sqlite3.h
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/!svn/ver/2/trunk/easySQLite/easySQLite/easySQLite/sqlite3.h
+END
+SqlDatabase.h
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/!svn/ver/2/trunk/easySQLite/easySQLite/easySQLite/SqlDatabase.h
+END
+SHA1.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/!svn/ver/2/trunk/easySQLite/easySQLite/easySQLite/SHA1.cpp
+END
+SqlValue.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/!svn/ver/2/trunk/easySQLite/easySQLite/easySQLite/SqlValue.cpp
+END

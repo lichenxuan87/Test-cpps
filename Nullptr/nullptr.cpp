@@ -22,7 +22,14 @@ int main()
         cout << "nullPtr has type: \"nullptr\"" << endl;
     }
     
+    int i = 0;
+    while (i++ <= 3)
+    {
+    }
+
     cout << "Size of width32: " << sizeof(width32) << endl;
+
+    cout << "i = " << i << endl;
 
     return 0;
 }

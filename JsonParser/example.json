@@ -1,0 +1,27 @@
+{
+    "properties":
+    [
+        {
+            "property": 0,                    
+            "value_type": 0,
+            "value": 1        
+        },
+        {
+            "property": 1,            
+            "value_type": 0,
+            "value": 0
+        },
+        {
+            "property": 2,            
+            "value_type": 1,
+            "value" : [0, 1, 1]    
+        },
+        {
+            "property": 9,            
+            "value_type": 3,
+            "value" : [0, 3, 4]
+        }
+    ],
+    
+    "timestamp":1234567
+}

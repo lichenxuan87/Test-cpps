@@ -1,0 +1,96 @@
+sh-3.2# openssl s_client -connect dc-qa.ebanma.com:20016 -CApath "/etc/ssl/certs/"
+CONNECTED(00000003)
+depth=2 C = US, O = "VeriSign, Inc.", OU = VeriSign Trust Network, OU = "(c) 2006 VeriSign, Inc. - For authorized use only", CN = VeriSign Class 3 Public Primary Certification Authority - G5
+verify return:1
+depth=1 C = US, O = Symantec Corporation, OU = Symantec Trust Network, CN = Symantec Class 3 Secure Server CA - G4
+verify return:1
+depth=0 C = CN, ST = Shanghai, L = Shanghai, O = "BanMa Info-Tech Co.,Ltd", OU = Operations Department, CN = *.ebanma.com
+verify return:1
+---
+Certificate chain
+ 0 s:/C=CN/ST=Shanghai/L=Shanghai/O=BanMa Info-Tech Co.,Ltd/OU=Operations Department/CN=*.ebanma.com
+   i:/C=US/O=Symantec Corporation/OU=Symantec Trust Network/CN=Symantec Class 3 Secure Server CA - G4
+ 1 s:/C=US/O=Symantec Corporation/OU=Symantec Trust Network/CN=Symantec Class 3 Secure Server CA - G4
+   i:/C=US/O=VeriSign, Inc./OU=VeriSign Trust Network/OU=(c) 2006 VeriSign, Inc. - For authorized use only/CN=VeriSign Class 3 Public Primary Certification Authority - G5
+---
+Server certificate
+-----BEGIN CERTIFICATE-----
+MIIG/TCCBeWgAwIBAgIQRf7MWJHORgKdz+e5WwIUBjANBgkqhkiG9w0BAQsFADB+
+MQswCQYDVQQGEwJVUzEdMBsGA1UEChMUU3ltYW50ZWMgQ29ycG9yYXRpb24xHzAd
+BgNVBAsTFlN5bWFudGVjIFRydXN0IE5ldHdvcmsxLzAtBgNVBAMTJlN5bWFudGVj
+IENsYXNzIDMgU2VjdXJlIFNlcnZlciBDQSAtIEc0MB4XDTE2MDYwMjAwMDAwMFoX
+DTE5MDYwMjIzNTk1OVowgYwxCzAJBgNVBAYTAkNOMREwDwYDVQQIDAhTaGFuZ2hh
+aTERMA8GA1UEBwwIU2hhbmdoYWkxIDAeBgNVBAoMF0Jhbk1hIEluZm8tVGVjaCBD
+by4sTHRkMR4wHAYDVQQLDBVPcGVyYXRpb25zIERlcGFydG1lbnQxFTATBgNVBAMM
+DCouZWJhbm1hLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAMez
+Ut7T5d31w92bgOPtfqOa6CdpJj/MC7+8XMGsvoHm1vrY+LEr31wYdS2AfW++cVMC
+xfHGF7sGjLy4rUC+1+vEeA4duPV57feYQTTRVHMomLdYBmRueYFeYfE46LP7QHQC
+JqXH5sY/krRNnpgkQcUBKsKoI7WEPbQTqur3qLInsqTxRnvzqWwNQSFXoDST+TGm
+VZcvDJOmz9Ty7ZbKxU4EkEcJKzoQd5CG+f/J/Z6me93KhMOVWkKX1rKQCUuMRNGS
+1imvnU8fj+JfXx1Dj+OsPLhQHwk+OA1XiELt7fGvhtrBbo0bVFdvG6MUrmxT5mMS
+AJEHomAQsJZZz0gFrscCAwEAAaOCA2YwggNiMCMGA1UdEQQcMBqCDCouZWJhbm1h
+LmNvbYIKZWJhbm1hLmNvbTAJBgNVHRMEAjAAMA4GA1UdDwEB/wQEAwIFoDArBgNV
+HR8EJDAiMCCgHqAchhpodHRwOi8vc3Muc3ltY2IuY29tL3NzLmNybDBhBgNVHSAE
+WjBYMFYGBmeBDAECAjBMMCMGCCsGAQUFBwIBFhdodHRwczovL2Quc3ltY2IuY29t
+L2NwczAlBggrBgEFBQcCAjAZDBdodHRwczovL2Quc3ltY2IuY29tL3JwYTAdBgNV
+HSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwHwYDVR0jBBgwFoAUX2DPYZBV34RD
+FIpgKrL1evRDGO8wVwYIKwYBBQUHAQEESzBJMB8GCCsGAQUFBzABhhNodHRwOi8v
+c3Muc3ltY2QuY29tMCYGCCsGAQUFBzAChhpodHRwOi8vc3Muc3ltY2IuY29tL3Nz
+LmNydDCCAfUGCisGAQQB1nkCBAIEggHlBIIB4QHfAHYA3esdK3oNT6Ygi4GtgWhw
+fi6OnQHVXIiNPRHEzbbsvswAAAFVEBvATgAABAMARzBFAiEAqcii9ecr8JSrdU2J
+kEsVCihWfjglfflYOAkHvQHVFe4CIHl7tZlWtYfzr7xzH54fxCpQysZ0ytU3zzsA
+agv/25pCAHUApLkJkLQYWBSHuxOizGdwCjw1mAT5G9+443fNDsgN3BAAAAFVEBvA
+awAABAMARjBEAiAdYFb9zi19kd4t68x54BiJ/hazvd/zWyqM3m04o97DQgIgPpUr
+IB5TbaFLvlW0WYXQRNk56Udk2OShrLGIP/o82JEAdgBo9pj4H2SCvjqM7rkoHUz8
+cVFdZ5PURNEKZ6y7T0/7xAAAAVUQG8CKAAAEAwBHMEUCIEut4HJaMEiM9F/NHL+G
+l0cjUhlCcUTILD7ybXWlzVMaAiEA2mYNJl1pvYP0SyxvsC1J1skStU8Q6TaMzIvJ
+YEIica4AdgDuS723dc5guuFCaR+r4Z5mow9+X7By2IMAxHuJeqj9ywAAAVUQG8JC
+AAAEAwBHMEUCIHESkKlGKheWAesb9atH1KMqOVz7qDNgp84paMKU/TmaAiEAx6LL
+qjaGN1iWUyNxOAc5utGr6g90ifuY1+FFGpJo9X0wDQYJKoZIhvcNAQELBQADggEB
+AEIVl98D83c18z/hZ1CJ0pXhiH0ZApXNopCNerJrDBi59pr6tcEvUcQ1dPsxy1oy
+pf/W9lkNFZCLWPFN9zfTzCruok32Bw5ZWu/oA/Jzm95x0b5RnohujLv5dFLuZnB1
+WhE/Vd11m9ps2oqvc3mJ2Jc9GYA3fNScRbZC/yjTiAg4oJPhBysqFVAU22Mr5g2F
+ujwR3ykruRUkG1AzfAf87SrrGF7FcYJtieHIBYrngI1HDlZENL9PHcELIZDNbxUF
+yNWAgWJReZKzRgtmrX07PSl24cEgRXnsJZ79g2+nQx6DNRyOOAyiUjBvUQHOD0tz
+yDjKQdFqntaETsKnxb2Q3xc=
+-----END CERTIFICATE-----
+subject=/C=CN/ST=Shanghai/L=Shanghai/O=BanMa Info-Tech Co.,Ltd/OU=Operations Department/CN=*.ebanma.com
+issuer=/C=US/O=Symantec Corporation/OU=Symantec Trust Network/CN=Symantec Class 3 Secure Server CA - G4
+---
+No client certificate CA names sent
+---
+SSL handshake has read 3811 bytes and written 423 bytes
+---
+New, TLSv1/SSLv3, Cipher is ECDHE-RSA-AES256-GCM-SHA384
+Server public key is 2048 bit
+Secure Renegotiation IS supported
+Compression: NONE
+Expansion: NONE
+SSL-Session:
+    Protocol  : TLSv1.2
+    Cipher    : ECDHE-RSA-AES256-GCM-SHA384
+    Session-ID: 13901E35019A399CBCA545C4E3A1CA4CB07468C683DA4755FA06304AC3328A12
+    Session-ID-ctx: 
+    Master-Key: 664C9DC7C88187FF38D501EFA7FB8E565AE7D9036C22CACA3F0F978ECC974CAA755D554DEB8C97AB5084EB82CD886BB5
+    Key-Arg   : None
+    PSK identity: None
+    PSK identity hint: None
+    SRP username: None
+    TLS session ticket lifetime hint: 60 (seconds)
+    TLS session ticket:
+    0000 - eb 12 8e 0b 4c 1d 8d 76-14 91 89 1b ca be 54 e6   ....L..v......T.
+    0010 - 5f 5d f5 76 17 76 51 06-17 f7 34 6e ce 1b 5f 08   _].v.vQ...4n.._.
+    0020 - 90 94 f0 1a fa 74 1b d4-29 03 32 c7 e5 70 4a d9   .....t..).2..pJ.
+    0030 - c1 29 92 15 c9 d4 3c 00-71 02 29 cb c7 71 36 f9   .)....<.q.)..q6.
+    0040 - 20 27 9f 39 a2 ca 44 a5-33 03 7e a2 f6 29 fd 40    '.9..D.3.~..).@
+    0050 - 2c 35 10 21 61 46 0d 36-b7 7d 9d e3 bb ec 1e 86   ,5.!aF.6.}......
+    0060 - 89 c6 92 cf b7 77 21 76-c1 a4 8d 41 64 b0 34 cf   .....w!v...Ad.4.
+    0070 - 7d 12 4b 3d 3d 43 14 ef-d7 19 76 e2 70 98 d7 72   }.K==C....v.p..r
+    0080 - b7 00 38 12 5f 34 c4 8d-c0 bd c5 1e 17 fa 0d f8   ..8._4..........
+    0090 - bd ab bb 5b 96 71 ec 9e-93 e3 3d f9 09 22 73 15   ...[.q....=.."s.
+    00a0 - 1a ca 23 a3 ef d5 42 ca-4e e4 b2 13 ae 95 94 f9   ..#...B.N.......
+
+    Start Time: 1475295284
+    Timeout   : 300 (sec)
+    Verify return code: 0 (ok)
+---

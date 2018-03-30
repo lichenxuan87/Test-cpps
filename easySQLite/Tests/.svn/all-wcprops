@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/2/trunk/easySQLite/easySQLite/Tests
+END
+TestSqlTable.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/!svn/ver/2/trunk/easySQLite/easySQLite/Tests/TestSqlTable.cpp
+END
+TestSqlRecordSet.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/!svn/ver/2/trunk/easySQLite/easySQLite/Tests/TestSqlRecordSet.cpp
+END
+TestSqlValue.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/!svn/ver/2/trunk/easySQLite/easySQLite/Tests/TestSqlValue.cpp
+END
+TestSqlRecord.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/!svn/ver/2/trunk/easySQLite/easySQLite/Tests/TestSqlRecord.cpp
+END
+TestSqlFieldSet.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/!svn/ver/2/trunk/easySQLite/easySQLite/Tests/TestSqlFieldSet.cpp
+END
+TestSqlField.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/!svn/ver/2/trunk/easySQLite/easySQLite/Tests/TestSqlField.cpp
+END
+TestSqlDatabase.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/!svn/ver/2/trunk/easySQLite/easySQLite/Tests/TestSqlDatabase.cpp
+END
