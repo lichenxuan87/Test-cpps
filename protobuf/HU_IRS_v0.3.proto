@@ -1,0 +1,186 @@
+
+syntax = "proto3";
+
+enum Messagetype
+{
+	REQUEST_RESPONSE_NONE = 0;              //no use,just for remove 0 in the enum
+	REQUEST_HEARTBEAT_SIGNAL = 1;            //heartbeat signal
+	RESPONSE_HEARTBEAT_RESULT = 2;           //heartbeat call back
+
+	REQUEST_CHANGE_SETTINGS = 3;   
+	RESPONSE_CHANGE_SETTINGS = 4;
+	REQUEST_GET_SETTINGS = 5;   
+	RESPONSE_GET_SETTINGS = 6;
+
+	REQUEST_FACE_IDENTIFY = 7;               
+	RESPONSE_FACE_IDENTIFY = 8;    
+
+	REQUEST_IRS_ACTION = 9;               
+	RESPONSE_IRS_ACTION = 10;      
+
+	REQUEST_WELCOME_MODE = 11;
+	RESPONSE_WELCOME_MODE = 12;
+
+	REQUEST_SEE_OFF_MODE = 13;
+	RESPONSE_SEE_OFF_MODE = 14;
+
+	REQUEST_FACEINFO_ADD = 15;				
+	RESPONSE_FACEINFO_ADD = 16;
+
+	REQUEST_FACEINFO_DEL = 17;
+	RESPONSE_FACEINFO_DEL = 18;
+
+	RESPONSE_EMOTION = 19;
+	RESPONSE_FATIGUER = 20;
+
+	REQUEST_BACKLIGHTSET = 21;		
+	RESPONSE_BACKLIGHTSET = 22;
+	
+	REQUEST_RECORD_VIDEO_CTRL = 23;				
+	RESPONSE_RECORD_VIDEO_CTRL = 24;
+
+	REQUEST_GET_PICTURE_CTRL = 25;
+	RESPONSE_GET_PICTURE_CTRL = 26;			
+}
+
+enum Contrltype
+{
+  Contrltype_START = 0;
+	Contrltype_STOP = 1;
+	Contrltype_PAUSE = 2;
+	Contrltype_CONTINUE = 3;
+	Contrltype_GET = 4;
+	Contrltype_SET = 5;
+}
+
+enum Driver_Emotion
+{
+    NORMAL_Emotion = 0;
+    HAPPY = 1;
+    ANGRY = 2;
+}
+
+enum Driver_Fatigue
+{
+    NORMAL_Fatigue = 0;
+    LOW = 1;
+	MIDDLE = 2;
+	HIGH = 3;
+}
+
+enum EMOJITYPE
+{
+    SMILE = 0;
+	LAUGH = 1;
+	BIG_EYES = 2;
+	SQUINT = 3;
+	BLINK = 4;
+	SWEATING = 5;
+	COLD_SWEAT =6;
+	RUN = 7;
+	JUMP = 8;
+
+	THINK = 30;
+
+	NOD = 60;
+	SHAKE = 61;
+	UP_VOTE = 62;
+	SEARCH_AROUND = 63;
+	MAGNIFIER = 64;
+	SEARCH_BAG = 65;
+	LOOK_DOWN = 66;
+	LOOK_LEFT = 67;
+	LOOK_RIGHT = 68;
+	HANDS_LOVE_HEART = 69;
+	AIR_KISS = 70;
+	EXCELLENT = 71;
+	DOUBT = 72;
+	PECULIAR_SMILE = 73;
+	DESPISE = 74;
+	CROSS = 75;
+	HANDS_WAVING = 76;
+	TICK = 77;
+	CLAP = 78;
+
+
+	SUNGLASSES = 100;
+	UMBRELLA = 101;
+	WEAR_MASK = 102;
+	MAKE_PHONE_CALL = 103;
+	READ_MAP = 104;
+	MUSIC_WITH_EARPHONE_ON = 105;
+	CAMERA = 106;
+	BLOW = 107;
+	WAVE_GOODBYE = 108;
+}
+
+message Contrlinfo
+{
+    int32 voice_position = 1;
+	EMOJITYPE Emoji_type = 2;
+	int32 	Emoji_time =  3;
+	int32 turnAngle = 4;
+	int32 backlight = 5;
+	bool main_switch = 6;
+	bool face_recognition_switch = 7;
+	bool welcome_mode_switch = 8;
+	bool see_off_mode_switch = 9;
+	bool emotion_recognition_switch = 10;
+	bool fatigue_switch = 11;
+	string uuid = 12;
+	string license_url = 13;
+}
+
+message IHUContrl
+{
+    Contrltype type = 1;
+	Contrlinfo info = 2;
+}
+
+message RespondInfo
+{
+    int32 status = 1;
+    int32 faceid = 2; 
+	Driver_Emotion emotion = 3;
+	Driver_Fatigue fatigue = 4;
+	bool main_switch = 5;
+	bool face_recognition_switch = 6;
+	bool welcome_mode_switch = 7;
+	bool see_off_mode_switch = 8;
+	bool emotion_recognition_switch = 9;
+	bool fatigue_switch = 10;
+	string fail_image_url = 11;
+	string video_url = 12;
+	string photo_url = 13;
+	string activation_code = 14;
+}
+
+enum RespondType
+{
+    RespondType_START = 0;
+	RespondType_END = 1;
+	RespondType_GET = 2;
+	RespondType_SET = 3;
+	RespondType_AUTO = 4;
+}
+message IRSRespond
+{
+	RespondType type= 1; 
+	RespondInfo result = 2;
+}
+
+message MsgResult
+{
+	bool result = 1;  //true:success    false:failed
+	bytes error_code = 2;  //none-error, dealing with failures and so on
+}
+
+message TopMessage
+{
+	Messagetype message_type = 1; 		//message type
+	IHUContrl IHU_ctrl = 2;  		//current signal type
+    IRSRespond IRS_Return=3;
+	MsgResult msg_result = 4;
+}
+
+
