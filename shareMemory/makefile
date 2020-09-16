@@ -2,7 +2,7 @@ TARGET = shareMemory
 
 SRC = shareMemory.cpp
 
-CXXFLAGS += -std=c++11 
+CXXFLAGS += -std=c++11 -g
 LDFLAGS += -lrt -pthread
 
 #OBJS = $(patsubst %.cpp,%.o,$(SRC))

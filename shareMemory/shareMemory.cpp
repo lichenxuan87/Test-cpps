@@ -16,11 +16,17 @@
 #include <errno.h>
 #include <string.h>
 #include <unistd.h>
+#include <semaphore.h>
 
 using namespace std;
 
 const string SHARE_MEMORY_NAME = "TMP_100KB_SHARE_MEMORY";
 const int SHARE_MEMORY_SIZE = 100 * 1024; //BYTES
+
+
+sem_t *semr;
+sem_t *semt;
+
 
 void usage()
 {
@@ -31,6 +37,7 @@ void usage()
 }
 
 
+// Creator and receiver
 void createShm()
 {
     int shm_fd = 0;
@@ -66,7 +73,56 @@ void createShm()
                 result = true;
 
                 // Do something here
-                memcpy(shm_ptr, "Hello world", 12);
+				string recvMessage = "";
+				int recvLength;
+
+				// Initialize Semaphores
+				sem_unlink("sem_r");
+				semr = sem_open("sem_r", O_CREAT | O_RDWR, 0666, 0);
+				if (semr == SEM_FAILED )
+				{
+					printf("errno = %d\n", errno );
+					return;
+				}
+
+				sem_unlink("sem_w");
+				semt = sem_open("sem_w", O_CREAT | O_RDWR, 0666, 1 );
+				if (semt == SEM_FAILED)
+				{
+					printf("errno = %d\n", errno );
+					return;
+				}
+
+				while (true)
+				{
+					sem_wait(semr);
+					cout <<"semr Ready" << endl;
+					recvMessage = "";
+
+					// Get length
+					int index = 0;
+					while (true)
+					{
+						if (reinterpret_cast<char*>(shm_ptr)[index] != ';')
+							recvMessage += reinterpret_cast<char*>(shm_ptr)[index];
+						else
+							break;
+						index++;
+					}
+
+					recvLength = stoi(recvMessage);
+
+					// Get content
+					recvMessage = "";
+					for (int i = 0; i < recvLength; i++)
+						recvMessage += reinterpret_cast<char*>(shm_ptr)[index+i+1];
+
+
+					cout << "Received: " << recvMessage << endl;
+
+					sem_post(semt);
+				}
+
             }
         }
     }
@@ -77,6 +133,7 @@ void createShm()
 }
 
 
+// User and sender
 void useShm()
 {
     int shm_fd = 0;
@@ -105,11 +162,43 @@ void useShm()
             cout << "Create memory mapping success" << endl;
             result = true;
 
-            // Do something here
-            char hello[12] = {0};
-            memcpy(hello, shm_ptr, 12);
 
-            cout << "String from share memory: " << hello << endl;
+            // Do something here
+            string inputMessage;
+
+            // Initialize Semaphores
+			semr = sem_open("sem_r", O_CREAT | O_RDWR, 0666, 0);
+			if (semr == SEM_FAILED )
+			{
+				printf("errno = %d\n", errno );
+				return;
+			}
+
+			semt = sem_open("sem_w", O_CREAT | O_RDWR, 0666, 1 );
+			if (semt == SEM_FAILED)
+			{
+				printf("errno = %d\n", errno );
+				return;
+			}
+
+            while (true)
+            {
+                sem_wait(semt);
+                cout <<"semt Ready" << endl;
+
+                // Get user input and add length before it
+                // e.g. input: Hello World; Send: 12;Hello World
+            	cout << "Input your mesage:";
+            	cin >> inputMessage;
+
+            	inputMessage = to_string(inputMessage.length()) + string(";") + inputMessage;
+
+            	strncpy(reinterpret_cast<char*>(shm_ptr), inputMessage.c_str(), inputMessage.length()+1);
+
+            	sem_post(semr);
+            }
+
+
         }
 
     }
@@ -124,6 +213,9 @@ void useShm()
 
 int main(int argc, char* argv[])
 {
+	semr = NULL;
+	semt = NULL;
+
 
 	if (argc == 1)
 	{
