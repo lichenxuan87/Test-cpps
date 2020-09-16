@@ -19,15 +19,15 @@
 
 using namespace std;
 
-const string SHARE_MEMORY_NAME = "/TMP_100KB_SHARE_MEMORY";
+const string SHARE_MEMORY_NAME = "TMP_100KB_SHARE_MEMORY";
 const int SHARE_MEMORY_SIZE = 100 * 1024; //BYTES
 
 void usage()
 {
-    cout << "Usage: shareMemory -c -s" << endl;
+    cout << "Usage: shareMemory <number>" << endl;
     cout << "By default this act as a client" << endl;
-    cout << " -c   act as client / user";
-    cout << " -s   act as server / creator";
+    cout << " 1   act as client / user" << endl;
+    cout << " 2   act as server / creator" << endl;
 }
 
 
@@ -71,6 +71,9 @@ void createShm()
         }
     }
 
+    // Release memory mapped to this process
+	munmap(shm_ptr, SHARE_MEMORY_SIZE);
+
 }
 
 
@@ -110,29 +113,39 @@ void useShm()
         }
 
     }
+
+    // Release memory mapped to this process
+    munmap(shm_ptr, SHARE_MEMORY_SIZE);
+
+    // Unlink share memory file
+    shm_unlink(SHARE_MEMORY_NAME.c_str());
 }
 
 
 int main(int argc, char* argv[])
 {
 
-    switch (argc)
-    {
-    case 1:
-        useShm();
-        break;
+	if (argc == 1)
+	{
+		usage();
+	}
+	else
+	{
+		char* inputChoice = argv[1];
 
-    case 2:
-        createShm();
-        break;
+		if (inputChoice[0] == '1')
+		{
+			useShm();
+		}
+		else if (inputChoice[0] == '2')
+		{
+			createShm();
+		}
+		else
+		{
+			usage();
+		}
+	}
 
-    default:
-        useShm();
-        break;
-    }
 
-    while (1)
-    {
-        sleep(1);
-    }
 }
