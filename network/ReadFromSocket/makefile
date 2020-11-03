@@ -4,16 +4,16 @@
 CLIENT = client
 SERVER = server
 
-CLIENT_SRC = client.cpp
-SERVER_SRC = server.cpp
+CLIENT_SRC = client.c
+SERVER_SRC = server.c
 
 CFLAGS +=  $(INC) -Wall -g
 CXXFLAGS += $(CFLAGS) -std=c++11
-LDFLAGS = -L$(SYSTEM_ROOT)/usr/lib/x86_64-linux-gnu -L$(SYSTEM_ROOT)/usr/lib \
+LDFLAGS = -lpthread -L$(SYSTEM_ROOT)/usr/lib/x86_64-linux-gnu -L$(SYSTEM_ROOT)/usr/lib \
 			-Wl,-rpath-link,$(SYSTEM_ROOT)/usr/lib,-rpath-link,$(SYSTEM_ROOT)/lib
 
-SERVER_OBJ = $(patsubst %.cpp,%.o,$(SERVER_SRC))
-CLIENT_OBJ = $(patsubst %.cpp,%.o,$(CLIENT_SRC))
+SERVER_OBJ = $(patsubst %.c,%.o,$(SERVER_SRC))
+CLIENT_OBJ = $(patsubst %.c,%.o,$(CLIENT_SRC))
 
 DBUS_GEN_OBJ = $(patsubst %.c,%.o,$(DBUS_GEN_SRC))
 

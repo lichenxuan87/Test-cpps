@@ -1,4 +1,3 @@
-/*
 /* A simple server in the internet domain using TCP
    The port number is passed as an argument */
 #include <stdio.h>
@@ -8,6 +7,7 @@
 #include <sys/types.h>
 #include <sys/socket.h>
 #include <netinet/in.h>
+#include <pthread.h>
 
 #define BUFFER_LEN 65536
 
@@ -153,6 +153,19 @@ void error(const char *msg)
     exit(1);
 }
 
+void* sendMessage(void* newsockfd)
+{
+	int sockfd = *((int*)newsockfd);
+
+	while (1)
+	{
+		write(sockfd, "Server push message", strlen("Server push message"));
+		sleep(3);
+	}
+
+	return NULL;
+}
+
 int main(int argc, char *argv[])
 {
      int sockfd, newsockfd, portno;
@@ -172,24 +185,41 @@ int main(int argc, char *argv[])
      serv_addr.sin_family = AF_INET;
      serv_addr.sin_addr.s_addr = INADDR_ANY;
      serv_addr.sin_port = htons(portno);
+
+     //bind and listen
      if (bind(sockfd, (struct sockaddr *) &serv_addr,
               sizeof(serv_addr)) < 0)
               error("ERROR on binding");
      listen(sockfd,5);
      clilen = sizeof(cli_addr);
+
+     // Accept
      newsockfd = accept(sockfd,
                  (struct sockaddr *) &cli_addr,
                  &clilen);
+
      if (newsockfd < 0)
           error("ERROR on accept");
-     bzero(buffer,BUFFER_LEN);
-     n = read(newsockfd,buffer,BUFFER_LEN);
-     if (n < 0)
-         error("ERROR reading from socket");
-     else
-         printf("Here is the message: %s\n",buffer);
-     n = write(newsockfd, data, strlen(data));
-     if (n < 0) error("ERROR writing to socket");
+
+     pthread_t pid = 0;
+     pthread_create(&pid, NULL, sendMessage, &newsockfd);
+
+     // Receive and reply
+     while (1)
+     {
+		 bzero(buffer,BUFFER_LEN);
+		 n = read(newsockfd,buffer,BUFFER_LEN);
+		 if (n < 0)
+			 error("ERROR reading from socket");
+		 else
+			 printf("Here is the message: %s\n",buffer);
+		 n = write(newsockfd, data, strlen(data));
+		 if (n < 0) {
+			 error("ERROR writing to socket, terminating...\n");
+			 break;
+		 }
+
+     }
      close(newsockfd);
      close(sockfd);
      return 0;
