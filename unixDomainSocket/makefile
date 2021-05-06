@@ -1,0 +1,48 @@
+#This is cross platform make file. 
+# To build on arm platform, please run "source env.sh" first.
+
+CLIENT = client
+SERVER = server
+
+
+all :$(CLIENT) $(SERVER)
+
+CLIENT_SRC = client.cpp
+SERVER_SRC = server.cpp
+
+#PACKAGES += libsystemd
+
+ifndef TARGET_ARC
+	PKG_CONFIG = pkg-config
+endif
+
+
+INC = -I$(SYSTEM_ROOT)/usr/include
+
+LB_INC = -L$(SYSTEM_ROOT)/usr/lib
+
+
+CFLAGS += $(INC) -g
+#CFLAGS += `$(PKG_CONFIG) --cflags $(PACKAGES)`
+CXXFLAGS += $(CFLAGS) 
+
+
+#LDFLAGS += `$(PKG_CONFIG) --libs $(PACKAGES)` 
+LDFLAGS +=  $(LB_INC) \
+            -Wl,-rpath-link,$(SYSTEM_ROOT)/usr/lib,-rpath-link,$(SYSTEM_ROOT)/lib
+
+#OBJS = $(patsubst %.cpp,%.o,$(SRC))
+#COBJS = $(patsubst %.c,%.o,$(CSRC))
+
+	
+$(CLIENT) : $(CLIENT_SRC)
+	$(CXX) $(CXXFLAGS) $^ $(LDFLAGS) -o $@
+
+$(SERVER) : $(SERVER_SRC)
+	$(CC) $(CXXFLAGS) $^ $(LDFLAGS) -o $@
+
+
+#.PHONY: clean
+clean:
+	rm -rf $(CLIENT) $(SERVER)
+

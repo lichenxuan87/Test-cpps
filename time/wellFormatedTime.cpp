@@ -9,7 +9,7 @@
  */
 
 
-#include <time.h>
+#include "wellFormatedTime.h"
 #include <cstdio>
 #include <errno.h>
 #include <string.h>
@@ -30,12 +30,15 @@ time_t getTime()
     timespec kernelTp = {0};
 
     // Get Current wall clock time
-    clock_gettime(CLOCK_REALTIME_COARSE, &wallTp); // CLOCK_REALTIME_COARSE: faster but less precise
+    // For QNX, use CLOCK_REALTIME
+    // clock_gettime(CLOCK_REALTIME_COARSE, &wallTp); // CLOCK_REALTIME_COARSE: faster but less precise
+
 
     // Get current kernel time
+    // For QNX, use CLOCK_MONOTONIC
     clock_gettime(CLOCK_MONOTONIC_RAW, &kernelTp); // Kernel time
 
-    printWellFormatedTime(wallTp);
+    // printWellFormatedTime(wallTp);
 
     // Print kernel time
     printf("Kernel time: %ld.%.6ld\n", kernelTp.tv_sec, kernelTp.tv_nsec/1000);
@@ -51,21 +54,5 @@ void setTime(time_t t)
     }
 }
 
-int main()
-{
 
-    time_t wallTime = getTime();
-
-
-    // Set current wall clock time
-    wallTime -= 3600;
-    setTime(wallTime);
-
-    //
-    usleep(1000);
-
-    getTime();
-
-    return 0;
-}
 
